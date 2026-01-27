@@ -29,8 +29,8 @@ Set up the Conda environment and install dependencies required for MuSIC.
 
 ```bash
 
-conda create -n MuSIC_pretrain_test python=3.11
-conda activate MuSIC_pretrain_test
+conda create -n MuSIC_pretrain python=3.11
+conda activate MuSIC_pretrain
 ```
 
 - **CUDA:**  

@@ -26,20 +26,13 @@ class ResidualBlock1D(nn.Module):
         out = self.c1(x)
         out = self.b1(out)
         out = self.relu(out)
-        # print("1维残差网络 卷积层1输出",out.shape)
-
         out = self.c2(out)
         out = self.b2(out)
         out = self.relu(out)
-        # print("1维残差网络 卷积层2输出",out.shape)
-
         out = self.c3(out)
         out = self.b3(out)
-        # print("1维残差网络 卷积层3输出",out.shape)
-
         if self.downsample:
             identity = self.downsample(x)
-            # print(identity.shape)
 
         out = out + identity
         out = self.relu(out)

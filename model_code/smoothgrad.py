@@ -44,17 +44,9 @@ class SmoothGrad(object):
         Returns:
             [type]: [description]
         """
-
-        print(f"Shape of z: {z.shape}")
         
-<<<<<<< HEAD
         x = z[:, :, :1280]
         t = z[:, :, 1280:]
-=======
-        # 选择前4个通道作为序列部分（x），后2个通道作为结构部分（t）#系统检查这些中文翻译为英文
-        x = z[:, :4, :]  # 前4个通道
-        t = z[:, 4:, :]  # 后2个通道
->>>>>>> 25005da2a65a070708a45cd4ca594dc597a89dc6
         
         x_stddev = (self.x_stddev * (x.max() - x.min())).to(self.device).item()
         t_stddev = (self.t_stddev * (t.max() - t.min())).to(self.device).item()

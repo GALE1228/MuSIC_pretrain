@@ -179,8 +179,7 @@ def seq_logo(pwm, rna_base, height=30, nt_width=10, norm=0, alphabet='rna', colo
 
 def decode_str_2(m):
     seq = ""
-    for i in range(m.shape[1]):  # 遍历每列
-        # 找到值为1的通道
+    for i in range(m.shape[1]):
         if m[0, i] == 1:
             seq += 'U'
         elif m[1, i] == 1:

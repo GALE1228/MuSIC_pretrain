@@ -202,8 +202,6 @@ def calculate_metrics(label, prediction, objective):
         pred_class = prediction>0.5
         # tp, tn, fp, fn = tfnp(label[:,0], pred_class)
         tp, tn, fp, fn = tfnp(label, pred_class)
-        # mean = [np.nanmean(correct), np.nanmean(auc_roc), np.nanmean(auc_pr),tp, tn, fp, fn]
-        # std = [np.nanstd(correct), np.nanstd(auc_roc), np.nanstd(auc_pr)]
         
 
         # squared_error

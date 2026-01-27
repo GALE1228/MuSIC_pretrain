@@ -3,9 +3,9 @@
 MuSIC is a deep learning toolkit for predicting RNA-binding protein (RBP) interactions with RNA across multiple species, leveraging both sequence and secondary structure information, and evolutionary conservation. It supports within-species and cross-species prediction and high-attention region analysis.
 
 **Authors:**  
-Jiale He*, Tong Zhou*, Lufeng Hu*, Yuhua Jiao, Junhao Wang, Shengwen Yan, Siyao Jia, Qiuzhen Chen, Yangming Wang, Yucheng T. Yang, Lei Sun  
+Jiale He*, Tong Zhou*, Lufeng Hu*, Yuhua Jiao, Junhao Wang, Shengwen Yan, Siyao Jia, Qiuzhen Chen, Yangming Wang, Yucheng T. Yang#, Lei Sun#  
 
-*Equal contribution
+*Equal contribution, #Corresponding authors
 
 ---
 
@@ -66,7 +66,7 @@ data/
 Convert FASTA to H5 (with structure prediction and sequence embedding):
 
 ```bash
-taskset -c 0 python main.py --gerenate_embeddingh5 \
+taskset -c 0 python main.py --gerenate_embeddingh5 \ #一般都要有一个具体的软件名，而不是main
     --infer_embedding_data_process \
     --infer_fasta_path ./data/predict_data/mouse_test.fa \
     --gpuid 0 \
@@ -98,7 +98,7 @@ taskset -c 0 python main.py \
     --train \
     --rbp_name FUS_HITS-CLIP_Human \
     --smooth_rate 0.8725 \
-    --file_path ./data/cross_species \
+    --file_path ./data/cross_species \ #这个参数名太抽象了，最好明确一下，能直观理解用途。另外没找到上一步的h5文件以及再往前的pretrain文件和这里的关系。需要明确路径下的文件格式及来源，相互引用链接。
     --source_species HUMAN \
     --target_species MOUSE \
     --gpuid 0 \
@@ -180,6 +180,8 @@ taskset -c 0 python main.py \
 
 ### Inference (Prediction)
 
+每一个大步骤下得写一段话说明这一步是干什么的
+
 ```bash
 taskset -c 1 python main.py \
     --infer \
@@ -194,6 +196,8 @@ taskset -c 1 python main.py \
 ```
 **Output:**  
 Inference results are saved as `.inference` files in `music/out/infer/`.
+
+输出得说明输出文件每一列是什么意思
 
 ---
 

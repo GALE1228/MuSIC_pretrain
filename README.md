@@ -25,7 +25,8 @@ Jiale He*, Tong Zhou*, Lufeng Hu*, Yuhua Jiao, Junhao Wang, Shengwen Yan, Siyao 
 
 ### 1. Environment Setup
 
-Create environment
+Set up the Conda environment and install dependencies required for MuSIC.
+
 ```bash
 conda env create -f environment.yml
 conda activate MuSIC_pretrain
@@ -36,13 +37,19 @@ conda activate MuSIC_pretrain
 
 ### 2. Pretrained Model Installation and Environment Setup
 
+Install the necessary pretrained models for RNA and RBP sequence embeddings.
+
 See the [./pretrained_model/README.md](./pretrained_model/README.md).
 
 ### 3. RNAfold Installation
 
+Install the necessary pretrained models for RNA folding and RBP sequence embeddings.
+
 See the [./RNAtools/README.md](./RNAtools/README.md).
 
 ### 4. Requirements
+
+Ensure that you have the required Python version and dependencies to run the MuSIC toolkit.
 
 - Python 3.11.5
 - PyTorch 2.1.0 (CUDA recommended)
@@ -54,6 +61,8 @@ See the [./RNAtools/README.md](./RNAtools/README.md).
 
 ### Directory Structure
 
+Understand the organization of the datasets used for training, validation, and prediction.
+
 ```text
 data/
 ├── within_species/      # Within-species test datasets
@@ -63,7 +72,7 @@ data/
 ```
 ### Data Preprocessing
 
-Convert FASTA to H5 (with structure prediction and sequence embedding):
+Convert raw FASTA files into structured H5 files with sequence embeddings and structural predictions to prepare the data for model training, validation, or prediction.
 
 ```bash
 taskset -c 0 python main.py --gerenate_embeddingh5 \
@@ -80,6 +89,7 @@ taskset -c 0 python main.py --gerenate_embeddingh5 \
 
 **Output:**  
 The resulting file, `mouse_test_RiNALMo_rnaembedding.h5`, will be saved in the same directory as the input FASTA file.
+
 ### Data Format
 
 - ***.fa**: Input RNA sequences
@@ -91,6 +101,8 @@ The resulting file, `mouse_test_RiNALMo_rnaembedding.h5`, will be saved in the s
 ## Usage
 
 ### Cross-Species Training & Validation
+
+Train and validate the model on cross-species datasets, enabling the model to learn and predict RBP–RNA interactions across species.
 
 ```bash
 # Cross-Species Training
@@ -136,6 +148,8 @@ taskset -c 0 python main.py \
 
 ### Within-Species Training & Validation
 
+Train and validate the model using within-species datasets for more specific RBP–RNA interaction predictions.
+
 ```bash
 # Within-Species Training
 taskset -c 0 python main.py \
@@ -180,7 +194,7 @@ taskset -c 0 python main.py \
 
 ### Inference (Prediction)
 
-每一个大步骤下得写一段话说明这一步是干什么的
+Make predictions on new RNA sequences, generating scores indicating the likelihood of interaction with the RBP.
 
 ```bash
 taskset -c 1 python main.py \
@@ -206,6 +220,8 @@ This `.inference` file contains three columns: the first column lists the RNA na
 ---
 
 ### High Attention Region (HAR) Computation
+
+Identify regions in RNA sequences where the model’s attention is focused, providing insight into the key regions responsible for RBP–RNA interactions.
 
 ```bash
 taskset -c 1 python main.py \
@@ -246,6 +262,8 @@ Predicted RNA binding motifs for 184 RBPs across 11 species are available for do
 ---
 
 ## Output Directory Structure
+
+Understand where each type of output will be saved during the training, validation, and inference processes.
 
 - `music/out/model/`: Trained model weights (`.pth`)
 - `music/out/logs/`: Training and validation logs (`.txt`)

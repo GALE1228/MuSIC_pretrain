@@ -162,37 +162,3 @@ def inference(args, model, device, test_loader, rna_names_all, smooth_rate, sour
     p_all = np.concatenate(p_all)
     y_all = np.concatenate(y_all)
     return p_all, y_all, rna_names_out
-
-def compute_high_attention_region(args, model, device, test_loader, rna_names_all, target_RBP_emb):
-    from model_code.smoothgrad import GuidedBackpropSmoothGrad
-    model.eval()
-    L = 20
-    hars = []
-    rna_names_out = []
-
-    sgrad = GuidedBackpropSmoothGrad(model, device=device)
-    for batch_idx, (x0, y0) in enumerate(test_loader):
-        X, Y = x0.float().to(device), y0.to(device).float()
-        output = model(X, target_RBP_emb)
-        prob = torch.sigmoid(output)
-        p_np = prob.detach().cpu().numpy().reshape(-1)
-        rna_names_out_batch = rna_names_all[batch_idx * test_loader.batch_size : (batch_idx + 1) * test_loader.batch_size]
-        rna_names_out.extend(rna_names_out_batch)
-
-        guided_saliency  = sgrad.get_batch_gradients(X, target_RBP_emb, Y) # (N, 200, 1282)
-
-        attention_region = guided_saliency.sum(dim=2).to(device='cpu').numpy()  # (N, 200)
-        N, NS = attention_region.shape # (N, 200)
-
-        for i in range(N):
-            iar = attention_region[i]
-            ar_score = np.array([iar[j:j+L].sum() for j in range(NS-L+1)])
-            highest_ind = np.argmax(iar)
-            
-            rna_name = rna_names_out_batch[i]
-            if isinstance(rna_name, bytes):
-                rna_name = rna_name.decode('utf-8')
-
-            hars.append("{}\t{:.6f}\t{}\t{}\n".format(rna_name, p_np[i], highest_ind, highest_ind+L))
-
-    return hars

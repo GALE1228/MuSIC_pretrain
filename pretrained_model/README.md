@@ -15,10 +15,10 @@
     cd RiNALMo
     ```
 
-### Note:
-In our deployment tests, using the `./rinalmo/pretrained.py` script to download and load the pretrained `.pt` model file directly may result in errors.  
-We recommend replacing the `./rinalmo/pretrained.py` file with the `pretrained_model/RNA/pretrained.py` file provided in this repository.  
-You will also need to manually download the pretrained model weights.
+### Important:
+In our deployment tests, using the `./rinalmo/pretrained.py` script to download and load the pretrained `.pt` model file directly **will result in errors**.  
+You <span style="color:red">**must replace**</span> the `./rinalmo/pretrained.py` file with the `pretrained_model/RNA/pretrained.py` file provided in this repository.  
+Additionally, you <span style="color:red">**must manually download**</span> the pretrained model weights to ensure proper functionality.
 
 ---
 
@@ -57,6 +57,7 @@ pip install ./pretrained_model/RNA/RiNALMo/.
 2. If the above method fails, download and install the `.whl` file manually:
     ```bash
     wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.3.2/flash_attn-2.3.2+cu118torch2.1cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
+
     pip install flash_attn-2.3.2+cu118torch2.1cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
     ```
 
@@ -86,23 +87,22 @@ python ./pretrained_model/test_rna_RiNALMo.py
 ## Create Protein Embedding Environment
 1. Create and activate a new Conda environment:
     ```bash
-    conda env create -f ./pretrained_model/environment.yml
+    conda create -n MuSIC_prot5 python=3.11
     conda activate MuSIC_prot5
     ```
 2. Requirements:
     ```bash
-    transformers
-    sentencepiece
-    torch==2.6.0
-    pandas
-    protobuf
-    google
-    sentencepiece
+    pip install transformers==4.57.6
+    pip install sentencepiece==0.2.1
+    pip install torch==2.6.0
+    pip install pandas==3.0.0
+    pip install protobuf==6.33.4
+    pip install google==3.0.0
     ```
 
 ---
 
-## Test Protein Embedding
+## Protein Embedding
 Run the following script to test the embedding process and embed all test RBP sequences:
 ```bash
 python ./RBP_embedding.py

@@ -45,14 +45,11 @@ class SmoothGrad(object):
             [type]: [description]
         """
 
-        # z 形状: [batch_size, channels, sequence_length]
-        # print(f"Shape of z: {z.shape}")
+        print(f"Shape of z: {z.shape}")
         
-        # 选择前4个通道作为序列部分（x），后2个通道作为结构部分（t）
-        x = z[:, :4, :]  # 前4个通道
-        t = z[:, 4:, :]  # 后2个通道
+        x = z[:, :, :1280]
+        t = z[:, :, 1280:]
         
-        # 计算标准差
         x_stddev = (self.x_stddev * (x.max() - x.min())).to(self.device).item()
         t_stddev = (self.t_stddev * (t.max() - t.min())).to(self.device).item()
 
@@ -60,12 +57,10 @@ class SmoothGrad(object):
         x_noise = torch.zeros(x.shape).to(self.device)
         t_noise = torch.zeros(t.shape).to(self.device)
 
-        # 在多次采样中计算梯度
         for i in range(self.nsamples):
-            # 给序列和结构部分分别添加噪声
             x_plus_noise = x + x_noise.zero_().normal_(0, x_stddev)
             t_plus_noise = t + t_noise.zero_().normal_(0, t_stddev)
-            z_plus_noise = torch.cat((x_plus_noise, t_plus_noise), dim=1)  # 合并序列和结构部分
+            z_plus_noise = torch.cat((x_plus_noise, t_plus_noise), dim=2)
 
             grad = self.get_gradients(z_plus_noise, RBP_emb, y)
             if self.magnitude == 1:

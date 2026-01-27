@@ -243,4 +243,4 @@ dependencies:
       - torchaudio==2.1.2+cu118
       - torchvision==0.16.2+cu118
       - triton==2.1.0
-prefix: /home/master/miniconda3/envs/MuSIC_pretrain
+prefix: /home/master/miniconda3/envs/MuSIC_pretrain #这里不要紧吗？

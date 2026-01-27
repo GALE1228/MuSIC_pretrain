@@ -52,7 +52,7 @@ See the [./RNAtools/README.md](./RNAtools/README.md).
 Ensure that you have the required Python version and dependencies to run the MuSIC toolkit.
 
 - Python 3.11.5
-- PyTorch 2.1.0 (CUDA recommended)
+- PyTorch 2.1.2 (CUDA recommended)
 - See `environment.yml` for all dependencies.
 
 ---

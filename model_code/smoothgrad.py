@@ -48,7 +48,7 @@ class SmoothGrad(object):
         # z 形状: [batch_size, channels, sequence_length]
         # print(f"Shape of z: {z.shape}")
         
-        # 选择前4个通道作为序列部分（x），后2个通道作为结构部分（t）
+        # 选择前4个通道作为序列部分（x），后2个通道作为结构部分（t）#系统检查这些中文翻译为英文
         x = z[:, :4, :]  # 前4个通道
         t = z[:, 4:, :]  # 后2个通道
         

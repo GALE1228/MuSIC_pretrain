@@ -38,7 +38,6 @@ conda activate MuSIC_pretrain
 
 ### 2. Requirements
 
-<<<<<<< HEAD
 Ensure that you have the required Python version and dependencies to run the MuSIC toolkit.
 
 ```bash
@@ -50,37 +49,18 @@ pip install h5py
 pip install ml-collections==1.1.0
 pip install numpy==1.26.4
 ```
-=======
-Install the necessary pretrained models for RNA and RBP sequence embeddings.
-
-See the [./pretrained_model/README.md](./pretrained_model/README.md).
->>>>>>> 25005da2a65a070708a45cd4ca594dc597a89dc6
 
 ### 3. Pretrained Model Installation and Environment Setup
 
-<<<<<<< HEAD
 Install the necessary pretrained models for RNA and RBP sequence embeddings.
 
 See the [./pretrained_model/README.md](./pretrained_model/README.md).
 
 ### 4. RNAfold Installation
-=======
-Install the necessary pretrained models for RNA folding and RBP sequence embeddings.
-
-See the [./RNAtools/README.md](./RNAtools/README.md).
->>>>>>> 25005da2a65a070708a45cd4ca594dc597a89dc6
 
 Install the necessary pretrained models for RNA folding and RBP sequence embeddings.
 
-<<<<<<< HEAD
 See the [./RNAtools/README.md](./RNAtools/README.md).
-=======
-Ensure that you have the required Python version and dependencies to run the MuSIC toolkit.
-
-- Python 3.11.5
-- PyTorch 2.1.2 (CUDA recommended)
-- See `environment.yml` for all dependencies.
->>>>>>> 25005da2a65a070708a45cd4ca594dc597a89dc6
 
 ---
 
@@ -244,43 +224,6 @@ This `.inference` file contains three columns: the first column lists the RNA na
 | RNA2     | 1       | 0.92            |
 | RNA3     | 1       | 0.78            |
 | ...      | 1       | ...             |
-<<<<<<< HEAD
-=======
----
-
-### High Attention Region (HAR) Computation
-
-Identify regions in RNA sequences where the model’s attention is focused, providing insight into the key regions responsible for RBP–RNA interactions.
-
-```bash
-taskset -c 1 python main.py \
-    --har \
-    --infer_fasta_path data/predict_data/mouse_test.fa \
-    --rbp_name FUS_HITS-CLIP_Human \
-    --smooth_rate 0.8725 \
-    --source_species HUMAN \
-    --target_species MOUSE \
-    --gpuid 0 \
-    --batch_size 64 \
-    --pretrain_RNA_model RiNALMo
-```
-**Output:**  
-HAR results are saved as `.txt` files in `music/out/har/`.
-This `.txt` file contains four columns.
-| RNA_name | Predicted_Score | HAR start | HAR end |
-|----------|-----------------|-----------|---------|
-| RNA1     | 0.85            | 100       | 120     |
-| RNA2     | 0.92            | 59        | 79      |
-| RNA3     | 0.78            | 83        | 103     |
-| ...      | ...             | ...       | ...     |
----
-The table above displays the following information for each RNA:
-	•	RNA_name: The identifier for the RNA sequence.
-	•	Predicted_Score: The score predicted by the model for each RNA.
-	•	HAR start: The starting position of the high-attention region (HAR) within the RNA sequence.
-	•	HAR end: The ending position of the high-attention region (HAR) within the RNA sequence.
-
->>>>>>> 25005da2a65a070708a45cd4ca594dc597a89dc6
 ---
 
 ### Motif Resource

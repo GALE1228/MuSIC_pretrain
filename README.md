@@ -66,7 +66,7 @@ data/
 Convert FASTA to H5 (with structure prediction and sequence embedding):
 
 ```bash
-taskset -c 0 python main.py --gerenate_embeddingh5 \ #一般都要有一个具体的软件名，而不是main
+taskset -c 0 python main.py --gerenate_embeddingh5 \
     --infer_embedding_data_process \
     --infer_fasta_path ./data/predict_data/mouse_test.fa \
     --gpuid 0 \
@@ -98,7 +98,7 @@ taskset -c 0 python main.py \
     --train \
     --rbp_name FUS_HITS-CLIP_Human \
     --smooth_rate 0.8725 \
-    --file_path ./data/cross_species \ #这个参数名太抽象了，最好明确一下，能直观理解用途。另外没找到上一步的h5文件以及再往前的pretrain文件和这里的关系。需要明确路径下的文件格式及来源，相互引用链接。
+    --file_path ./data/cross_species \
     --source_species HUMAN \
     --target_species MOUSE \
     --gpuid 0 \
@@ -125,7 +125,7 @@ taskset -c 0 python main.py \
 - `--validate`: Initiates the model validation process.
 - `--rbp_name`: Specifies the name of the RBP.
 - `--smooth_rate`: Defines the label smoothing rate, which reflects the conservation between the target RBP and the source RBP.
-- `--file_path`: Specifies the path to the dataset directory.
+- `--file_path`: Specifies the path to the dataset directory, which contains two subdirectories: negative data and positive data. Each subdirectory includes .fa files. During the process, [RNAfold](./RNAtools/) will be used to first generate ***_annotation.tsv** files，followed by the deployment of the pre-trained [RiNALMo](./pretrained_model/) to generate ***_RiNALMo_rnaembedding.h5** files.
 - `--source_species`: Indicates the source species for the dataset, used to retrieve the RBP sequence embeddings for the source species.
 - `--target_species`: Indicates the target species for the dataset, used to retrieve the RBP sequence embeddings for the target species.
 - `--gpuid`: Specifies the GPU device ID to be used for training or validation.
@@ -196,9 +196,13 @@ taskset -c 1 python main.py \
 ```
 **Output:**  
 Inference results are saved as `.inference` files in `music/out/infer/`.
-
-输出得说明输出文件每一列是什么意思
-
+This `.inference` file contains three columns: the first column lists the RNA names, the second is a padding column with all values set to 1, and the third contains the predicted scores.
+| RNA_name | Padding | Predicted_Score |
+|----------|---------|-----------------|
+| RNA1     | 1       | 0.85            |
+| RNA2     | 1       | 0.92            |
+| RNA3     | 1       | 0.78            |
+| ...      | 1       | ...             |
 ---
 
 ### High Attention Region (HAR) Computation
@@ -216,7 +220,20 @@ taskset -c 1 python main.py \
     --pretrain_RNA_model RiNALMo
 ```
 **Output:**  
-HAR results are stored in `music/out/har/`.
+HAR results are saved as `.txt` files in `music/out/har/`.
+This `.txt` file contains four columns.
+| RNA_name | Predicted_Score | HAR start | HAR end |
+|----------|-----------------|-----------|---------|
+| RNA1     | 0.85            | 100       | 120     |
+| RNA2     | 0.92            | 59        | 79      |
+| RNA3     | 0.78            | 83        | 103     |
+| ...      | ...             | ...       | ...     |
+---
+The table above displays the following information for each RNA:
+	•	RNA_name: The identifier for the RNA sequence.
+	•	Predicted_Score: The score predicted by the model for each RNA.
+	•	HAR start: The starting position of the high-attention region (HAR) within the RNA sequence.
+	•	HAR end: The ending position of the high-attention region (HAR) within the RNA sequence.
 
 ---
 

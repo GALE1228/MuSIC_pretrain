@@ -15,7 +15,7 @@
     cd RiNALMo
     ```
 
-### Important:
+### Important
 In our deployment tests, using the `./pretrained_model/RNA/RiNALMo/rinalmo/pretrained.py` script to download and load the pretrained `.pt` model file directly **will result in errors**.  
 You <span style="color:red">**must replace**</span> the `./pretrained_model/RNA/RiNALMo/rinalmo/pretrained.py` file with the `./pretrained_model/RNA/pretrained.py` file provided in this repository.  
 Additionally, you <span style="color:red">**must manually download**</span> the pretrained model weights to ensure proper functionality.
@@ -74,7 +74,7 @@ If you encounter the error:
 
 ***AssertionError: Model ‘pretrained_model/RNA/RiNALMo/weights/rinalmo_giga_pretrained.pt’ is not available! Available models: dict_keys([‘giga-v1’])***
 
-Please refer to the **[Important]** section in the installation process. After replacing the necessary files, reinstall **RiNALMo** as instructed. This should resolve the issue.
+Please refer to the [**Important**](### Important) section in the installation process. After replacing the necessary files, reinstall [**RiNALMo**](## Install RiNALMo) as instructed. This should resolve the issue.
 
 ---
 

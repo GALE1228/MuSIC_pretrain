@@ -68,6 +68,13 @@ Run the following script to verify the installation:
 ```bash
 python ./pretrained_model/test_rna_RiNALMo.py
 ```
+## Noted
+
+If you encounter the error:
+
+***AssertionError: Model ‘pretrained_model/RNA/RiNALMo/weights/rinalmo_giga_pretrained.pt’ is not available! Available models: dict_keys([‘giga-v1’])***
+
+Please refer to the **[Important]** section in the installation process. After replacing the necessary files, reinstall **RiNALMo** as instructed. This should resolve the issue.
 
 ---
 

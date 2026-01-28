@@ -16,8 +16,8 @@
     ```
 
 ### Important:
-In our deployment tests, using the `./rinalmo/pretrained.py` script to download and load the pretrained `.pt` model file directly **will result in errors**.  
-You <span style="color:red">**must replace**</span> the `./rinalmo/pretrained.py` file with the `pretrained_model/RNA/pretrained.py` file provided in this repository.  
+In our deployment tests, using the `./pretrained_model/RNA/RiNALMo/rinalmo/pretrained.py` script to download and load the pretrained `.pt` model file directly **will result in errors**.  
+You <span style="color:red">**must replace**</span> the `./pretrained_model/RNA/RiNALMo/rinalmo/pretrained.py` file with the `./pretrained_model/RNA/pretrained.py` file provided in this repository.  
 Additionally, you <span style="color:red">**must manually download**</span> the pretrained model weights to ensure proper functionality.
 
 ---

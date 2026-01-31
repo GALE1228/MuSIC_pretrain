@@ -48,6 +48,7 @@ pip install torch==2.1.0
 pip install h5py
 pip install ml-collections==1.1.0
 pip install numpy==1.26.4
+pip install Bio
 ```
 
 ### 3. Pretrained Model Installation and Environment Setup

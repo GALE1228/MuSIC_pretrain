@@ -1,9 +1,10 @@
 # 🧬 MuSIC
 
-MuSIC is a deep learning toolkit for predicting RNA-binding protein (RBP) interactions with RNA across multiple species, leveraging both sequence and secondary structure information, and evolutionary conservation. It supports within-species and cross-species prediction and high-attention region analysis.
+MuSIC is a deep learning toolkit for predicting RNA-binding protein (RBP) interactions with RNA across multiple species, leveraging both sequence and secondary structure information, and evolutionary conservation.
 
 **Authors:**  
-Jiale He*, Tong Zhou*, Lufeng Hu*, Yuhua Jiao, Junhao Wang, Shengwen Yan, Siyao Jia, Qiuzhen Chen, Yangming Wang, Yucheng T. Yang#, Lei Sun#  
+Jiale He*, Tong Zhou*, Lu-Feng Hu*, Yuhua Jiao, Junhao Wang, Shengwen Yan, Siyao Jia, Qiuzhen Chen, Wentao Zhu, Jilin Zhang, Mutian Jia, Yuanning Li, Xianwei Wang, Yangming Wang, Yucheng T. Yang#, Lei Sun# 
+
 
 *Equal contribution, #Corresponding authors
 

@@ -13,6 +13,8 @@ Jiale He*, Tong Zhou*, Lu-Feng Hu*, Yuhua Jiao, Junhao Wang, Shengwen Yan, Siyao
 ### 🧩 MuSIC Framework
 ![MuSIC](fig/music.png)
 
+We have also developed an interactive prediction webserver, [MuSIC](https://sunlab.qd.sdu.edu.cn/MuSIC/home/index.html)
+
 - [Getting Started](#getting-started)
 - [Datasets](#datasets)
 - [Usage](#usage)

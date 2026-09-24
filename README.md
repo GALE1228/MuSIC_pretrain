@@ -252,13 +252,7 @@ Understand where each type of output will be saved during the training, validati
 If you use MuSIC in your research, please cite:
 
 ```bibtex
-@article{xxx,
-  title={xxx},
-  author={xxx},
-  year={xxx},
-  doi={xxx},
-  journal={xxx}
-}
+He, J., Zhou, T., Hu, LF. et al. Augmented prediction of multi-species protein–RNA interactions using evolutionary conservation of RNA-binding proteins. Nat Commun 17, 5764 (2026). https://doi.org/10.1038/s41467-026-72351-6
 ```
 
 ---
